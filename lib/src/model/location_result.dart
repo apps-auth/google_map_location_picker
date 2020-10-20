@@ -82,27 +82,21 @@ class LocationAdress {
     address_components.forEach((component) {
       List types = component['types'];
       String long_name = component['long_name'];
-      String short_name = component['short_name'];
+      // String short_name = component['short_name'];
 
       if (types.contains('street_number')) {
         l.street_number = long_name;
-      }
-      if (types.contains('route')) {
+      } else if (types.contains('route')) {
         l.route = long_name;
-      }
-      if (types.contains('sublocality_level_1')) {
+      } else if (types.contains('sublocality_level_1')) {
         l.sublocality_level_1 = long_name;
-      }
-      if (types.contains('administrative_area_level_1')) {
+      } else if (types.contains('administrative_area_level_1')) {
         l.administrative_area_level_1 = long_name;
-      }
-      if (types.contains('administrative_area_level_2')) {
+      } else if (types.contains('administrative_area_level_2')) {
         l.administrative_area_level_2 = long_name;
-      }
-      if (types.contains('country')) {
+      } else if (types.contains('country')) {
         l.country = long_name;
-      }
-      if (types.contains('postal_code')) {
+      } else if (types.contains('postal_code')) {
         l.postal_code = long_name;
       }
     });
