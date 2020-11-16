@@ -13,7 +13,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: '>=0.16.0 <=0.16.1'
-  intl_translation: '>=0.17.9 <=0.17.10'
+  intl_translation: '>=0.17.8 <=0.17.10'
   flutter_keyboard_visibility: '>=2.0.0 <=4.0.0'
   google_maps_flutter: ^0.5.27
   geolocator: ^5.3.1
