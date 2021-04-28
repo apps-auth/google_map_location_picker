@@ -88,8 +88,8 @@ class MapPickerState extends State<MapPicker> {
   Future<void> _initCurrentLocation() async {
     Position currentPosition;
     try {
-      currentPosition = await Geolocator()
-          .getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
+      currentPosition = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.best);
 
       d("position = $currentPosition");
 
@@ -263,7 +263,7 @@ class MapPickerState extends State<MapPicker> {
 
       print("endPoint --> $endPoint");
       var response = jsonDecode((await http.get(endPoint,
-              headers: await LocationUtils.getAppHeaders()))
+              headers: await LocationPickekLocationUtils.getAppHeaders()))
           .body);
 
       locationAdress = LocationAdress.fromMap(response['results'][0]);
@@ -313,10 +313,9 @@ class MapPickerState extends State<MapPicker> {
   var dialogOpen;
 
   Future _checkGeolocationPermission() async {
-    var geolocationStatus =
-        await Geolocator().checkGeolocationPermissionStatus();
+    var geolocationStatus = await Geolocator.checkPermission();
 
-    if (geolocationStatus == GeolocationStatus.denied && dialogOpen == null) {
+    if (geolocationStatus == LocationPermission.denied && dialogOpen == null) {
       d('showDialog');
       dialogOpen = showDialog(
         context: context,
@@ -341,10 +340,10 @@ class MapPickerState extends State<MapPicker> {
           );
         },
       );
-    } else if (geolocationStatus == GeolocationStatus.disabled) {
+    } else if (geolocationStatus == LocationPermission.denied) {
       // FIXME: handle this case
-    } else if (geolocationStatus == GeolocationStatus.granted) {
-      d('GeolocationStatus.granted');
+    } else if (geolocationStatus == LocationPermission.always ||
+        geolocationStatus == LocationPermission.whileInUse) {
       if (dialogOpen != null) {
         Navigator.of(context, rootNavigator: true).pop();
         dialogOpen = null;
@@ -353,7 +352,7 @@ class MapPickerState extends State<MapPicker> {
   }
 
   Future _checkGps() async {
-    if (!(await Geolocator().isLocationServiceEnabled())) {
+    if (!(await Geolocator.isLocationServiceEnabled())) {
       if (Theme.of(context).platform == TargetPlatform.android) {
         showDialog(
           context: context,

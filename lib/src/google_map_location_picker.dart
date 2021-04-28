@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_map_location_picker/generated/i18n.dart';
 import 'package:google_map_location_picker/src/map.dart';
@@ -144,10 +145,13 @@ class LocationPickerState extends State<LocationPicker> {
   /// Fetches the place autocomplete list with the query [place].
   void autoCompleteSearch(String place) {
     place = place.replaceAll(" ", "+");
-    var endpoint =
-        "https://maps.googleapis.com/maps/api/place/autocomplete/json?" +
-            "key=${widget.apiKey}&" +
-            "input={$place}&sessiontoken=$sessionToken";
+
+    String autoCompleteUrl = kIsWeb
+        ? LocationPickekLocationUtils.autoCompleteWebUrl
+        : LocationPickekLocationUtils.autoCompleteUrl;
+    var endpoint = "$autoCompleteUrl?" +
+        "key=${widget.apiKey}&" +
+        "input={$place}&sessiontoken=$sessionToken";
 
     if (locationResult != null) {
       endpoint += "&location=${locationResult.latLng.latitude}," +
@@ -156,8 +160,8 @@ class LocationPickerState extends State<LocationPicker> {
     if (widget.country != null) {
       endpoint += "&components=country:${widget.country}";
     }
-    print(endpoint);
-    LocationUtils.getAppHeaders()
+    print("AutoComplete --> $endpoint");
+    LocationPickekLocationUtils.getAppHeaders()
         .then((headers) => http.get(endpoint, headers: headers))
         .then((response) {
       if (response.statusCode == 200) {
@@ -201,11 +205,14 @@ class LocationPickerState extends State<LocationPicker> {
   void decodeAndSelectPlace(String placeId) {
     clearOverlay();
 
-    String endpoint =
-        "https://maps.googleapis.com/maps/api/place/details/json?key=${widget.apiKey}" +
-            "&placeid=$placeId";
+    String detailseUrl = kIsWeb
+        ? LocationPickekLocationUtils.detailsWebUrl
+        : LocationPickekLocationUtils.detailsUrl;
 
-    LocationUtils.getAppHeaders()
+    String endpoint = "$detailseUrl?key=${widget.apiKey}" + "&placeid=$placeId";
+    print("Details --> $endpoint");
+
+    LocationPickekLocationUtils.getAppHeaders()
         .then((headers) => http.get(endpoint, headers: headers))
         .then((response) {
       if (response.statusCode == 200) {
@@ -268,7 +275,7 @@ class LocationPickerState extends State<LocationPicker> {
 
   /// Fetches and updates the nearby places to the provided lat,lng
   void getNearbyPlaces(LatLng latLng) {
-    LocationUtils.getAppHeaders()
+    LocationPickekLocationUtils.getAppHeaders()
         .then((headers) => http.get(
             "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
                 "key=${widget.apiKey}&" +
@@ -308,7 +315,7 @@ class LocationPickerState extends State<LocationPicker> {
     var response = await http.get(
         "https://maps.googleapis.com/maps/api/geocode/json?latlng=${latLng.latitude},${latLng.longitude}"
         "&key=${widget.apiKey}",
-        headers: await LocationUtils.getAppHeaders());
+        headers: await LocationPickekLocationUtils.getAppHeaders());
 
     if (response.statusCode == 200) {
       Map<String, dynamic> responseJson = jsonDecode(response.body);

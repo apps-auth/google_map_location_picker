@@ -34,7 +34,7 @@ class SearchInputState extends State<SearchInput> {
   void initState() {
     super.initState();
     editController.addListener(onSearchInputChange);
-    KeyboardVisibility.onChange.listen((bool visible) {
+    KeyboardVisibilityController().onChange.listen((bool visible) {
       if (!visible) {
         focus.unfocus();
       }
