@@ -10,14 +10,13 @@ typedef WidgetBuilder<T> = Widget Function(BuildContext context, T snapshot);
 
 class FutureLoadingBuilder<T> extends StatefulWidget {
   const FutureLoadingBuilder({
-    Key key,
-    @required this.future,
+    Key? key,
+    required this.future,
     this.initialData,
-    @required this.builder,
+    required this.builder,
     this.mutable = false,
     this.loadingIndicator,
-  })  : assert(builder != null),
-        super(key: key);
+  }) : super(key: key);
 
   /// The asynchronous computation to which this builder is currently connected,
   /// possibly null.
@@ -35,14 +34,14 @@ class FutureLoadingBuilder<T> extends StatefulWidget {
   /// provided to the [builder] will become null, regardless of [initialData].
   /// (The error itself will be available in [AsyncSnapshot.error], and
   /// [AsyncSnapshot.hasError] will be true.)
-  final T initialData;
+  final T? initialData;
 
   /// default is true
   ///
   /// set to false if the future will change.
   final bool mutable;
 
-  final Widget loadingIndicator;
+  final Widget? loadingIndicator;
 
   @override
   _FutureLoadingBuilderState<T> createState() =>
@@ -50,7 +49,7 @@ class FutureLoadingBuilder<T> extends StatefulWidget {
 }
 
 class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
-  Future<T> future;
+  late Future<T> future;
 
   @override
   void initState() {
@@ -78,16 +77,14 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
                 d('SocketException-> ${error.message}');
                 return Center(
                   child: Text(
-                    S.of(context)?.please_check_your_connection ??
-                        'Please check your connection',
+                    S.of(context).please_check_your_connection,
                     overflow: TextOverflow.fade,
                   ),
                 );
               } else if (error is PlatformException &&
                   error.code == 'ERROR_GEOCODING_COORDINATES') {
                 return Text(
-                  S.of(context)?.please_check_your_connection ??
-                      'Please check your connection',
+                  S.of(context).please_check_your_connection,
                   overflow: TextOverflow.fade,
                 );
               } else {
@@ -97,8 +94,9 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
             }
 
             return widget.builder(context, snapshot.data);
+          default:
+            return widget.builder(context, snapshot.data);
         }
-        return widget.builder(context, snapshot.data);
       },
     );
   }

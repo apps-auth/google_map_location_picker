@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 /// Autocomplete results item returned from Google will be deserialized
 /// into this model.
 class AutoCompleteItem {
@@ -13,6 +14,13 @@ class AutoCompleteItem {
 
   /// Length of matched part of the [text]
   int length;
+
+  AutoCompleteItem({
+    required this.id,
+    required this.text,
+    required this.offset,
+    required this.length,
+  });
 
   @override
   String toString() {

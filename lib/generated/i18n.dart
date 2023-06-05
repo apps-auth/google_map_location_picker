@@ -11,26 +11,46 @@ import 'package:flutter/material.dart';
 class S implements WidgetsLocalizations {
   const S();
 
-  static S current;
+  static S? current;
 
   static const GeneratedLocalizationsDelegate delegate =
-    GeneratedLocalizationsDelegate();
+      GeneratedLocalizationsDelegate();
 
-  static S of(BuildContext context) => Localizations.of<S>(context, S);
+  static S of(BuildContext context) => Localizations.of<S>(context, S)!;
 
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
   String get access_to_location_denied => "Access to location denied";
-  String get allow_access_to_the_location_services => "Allow access to the location services.";
+  String get allow_access_to_the_location_services =>
+      "Allow access to the location services.";
   String get cant_get_current_location => "Can't get current location";
   String get finding_place => "Finding place...";
   String get no_result_found => "No result found";
   String get ok => "Ok";
   String get please_check_your_connection => "Please check your connection";
-  String get please_make_sure_you_enable_gps_and_try_again => "Please make sure you enable GPS and try again";
+  String get please_make_sure_you_enable_gps_and_try_again =>
+      "Please make sure you enable GPS and try again";
   String get search_place => "Search place";
   String get server_error => "Server error";
+
+  @override
+  String get reorderItemUp => 'Move up';
+
+  @override
+  String get reorderItemDown => 'Move down';
+
+  @override
+  String get reorderItemLeft => 'Move left';
+
+  @override
+  String get reorderItemRight => 'Move right';
+
+  @override
+  String get reorderItemToEnd => 'Move to the end';
+
+  @override
+  String get reorderItemToStart => 'Move to the start';
 }
 
 class $ar extends S {
@@ -40,15 +60,18 @@ class $ar extends S {
   TextDirection get textDirection => TextDirection.rtl;
 
   @override
-  String get cant_get_current_location => "لا يمكن الحصول علي الموقع الجغرافي الحالي";
+  String get cant_get_current_location =>
+      "لا يمكن الحصول علي الموقع الجغرافي الحالي";
   @override
   String get finding_place => "Finding place...";
   @override
   String get no_result_found => "No result found";
   @override
-  String get access_to_location_denied => "تم رفض إذن الوصل الي الموقع الجغرافي";
+  String get access_to_location_denied =>
+      "تم رفض إذن الوصل الي الموقع الجغرافي";
   @override
-  String get allow_access_to_the_location_services => "من فضلك قم بقبول إذن الوصول الي الموقع الجغرافي";
+  String get allow_access_to_the_location_services =>
+      "من فضلك قم بقبول إذن الوصول الي الموقع الجغرافي";
   @override
   String get server_error => "خطأ من الخادم حاول مرة اخري";
   @override
@@ -58,7 +81,8 @@ class $ar extends S {
   @override
   String get please_check_your_connection => "تأكد من وجود انترنت";
   @override
-  String get please_make_sure_you_enable_gps_and_try_again => "الرجاء التاكد من تفعيل الGPS و المحاولة مرة أخري";
+  String get please_make_sure_you_enable_gps_and_try_again =>
+      "الرجاء التاكد من تفعيل الGPS و المحاولة مرة أخري";
 }
 
 class $ru extends S {
@@ -68,11 +92,13 @@ class $ru extends S {
   TextDirection get textDirection => TextDirection.ltr;
 
   @override
-  String get cant_get_current_location => "Невозможно получить текущее местоположение";
+  String get cant_get_current_location =>
+      "Невозможно получить текущее местоположение";
   @override
   String get access_to_location_denied => "Доступ к местоположению запрещен";
   @override
-  String get allow_access_to_the_location_services => "Разрешить доступ к службам определения местоположения.";
+  String get allow_access_to_the_location_services =>
+      "Разрешить доступ к службам определения местоположения.";
   @override
   String get server_error => "Ошибка сервера";
   @override
@@ -80,9 +106,11 @@ class $ru extends S {
   @override
   String get ok => "ОК";
   @override
-  String get please_check_your_connection => "Пожалуйста, проверьте ваше соединение";
+  String get please_check_your_connection =>
+      "Пожалуйста, проверьте ваше соединение";
   @override
-  String get please_make_sure_you_enable_gps_and_try_again => "Пожалуйста, убедитесь, что вы включили GPS и попробуйте снова";
+  String get please_make_sure_you_enable_gps_and_try_again =>
+      "Пожалуйста, убедитесь, что вы включили GPS и попробуйте снова";
 }
 
 class $pt extends S {
@@ -92,7 +120,8 @@ class $pt extends S {
   TextDirection get textDirection => TextDirection.ltr;
 
   @override
-  String get cant_get_current_location => "Não é possível obter a localização atual";
+  String get cant_get_current_location =>
+      "Não é possível obter a localização atual";
   @override
   String get finding_place => "Finding place...";
   @override
@@ -100,7 +129,8 @@ class $pt extends S {
   @override
   String get access_to_location_denied => "Acesso ao local negado";
   @override
-  String get allow_access_to_the_location_services => "Permitir acesso aos serviços de localização.";
+  String get allow_access_to_the_location_services =>
+      "Permitir acesso aos serviços de localização.";
   @override
   String get server_error => "Erro de servidor";
   @override
@@ -110,7 +140,8 @@ class $pt extends S {
   @override
   String get please_check_your_connection => "Por favor, verifique sua conexão";
   @override
-  String get please_make_sure_you_enable_gps_and_try_again => "Certifique-se de ativar o GPS e tente novamente";
+  String get please_make_sure_you_enable_gps_and_try_again =>
+      "Certifique-se de ativar o GPS e tente novamente";
 }
 
 class $en extends S {
@@ -132,7 +163,8 @@ class $tr extends S {
   @override
   String get access_to_location_denied => "Konum erişimi reddedildi";
   @override
-  String get allow_access_to_the_location_services => "Konum servislerine izin verin.";
+  String get allow_access_to_the_location_services =>
+      "Konum servislerine izin verin.";
   @override
   String get server_error => "Sunucu hatası";
   @override
@@ -142,7 +174,8 @@ class $tr extends S {
   @override
   String get please_check_your_connection => "Lütfen bağlantınızı kontrol edin";
   @override
-  String get please_make_sure_you_enable_gps_and_try_again => "Lütfen GPS’i etkinleştirin ve tekrar deneyin.";
+  String get please_make_sure_you_enable_gps_and_try_again =>
+      "Lütfen GPS’i etkinleştirin ve tekrar deneyin.";
 }
 
 class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
@@ -158,8 +191,9 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
     ];
   }
 
-  LocaleListResolutionCallback listResolution({Locale fallback, bool withCountry = true}) {
-    return (List<Locale> locales, Iterable<Locale> supported) {
+  LocaleListResolutionCallback listResolution(
+      {Locale? fallback, bool withCountry = true}) {
+    return (List<Locale>? locales, Iterable<Locale> supported) {
       if (locales == null || locales.isEmpty) {
         return fallback ?? supported.first;
       } else {
@@ -168,38 +202,39 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
     };
   }
 
-  LocaleResolutionCallback resolution({Locale fallback, bool withCountry = true}) {
-    return (Locale locale, Iterable<Locale> supported) {
+  LocaleResolutionCallback resolution(
+      {Locale? fallback, bool withCountry = true}) {
+    return (Locale? locale, Iterable<Locale> supported) {
       return _resolve(locale, fallback, supported, withCountry);
     };
   }
 
   @override
   Future<S> load(Locale locale) {
-    final String lang = getLang(locale);
+    final String? lang = getLang(locale);
     if (lang != null) {
       switch (lang) {
         case "ar":
           S.current = const $ar();
-          return SynchronousFuture<S>(S.current);
+          return SynchronousFuture<S>(S.current!);
         case "ru":
           S.current = const $ru();
-          return SynchronousFuture<S>(S.current);
+          return SynchronousFuture<S>(S.current!);
         case "pt":
           S.current = const $pt();
-          return SynchronousFuture<S>(S.current);
+          return SynchronousFuture<S>(S.current!);
         case "en":
           S.current = const $en();
-          return SynchronousFuture<S>(S.current);
+          return SynchronousFuture<S>(S.current!);
         case "tr":
           S.current = const $tr();
-          return SynchronousFuture<S>(S.current);
+          return SynchronousFuture<S>(S.current!);
         default:
-          // NO-OP.
+        // NO-OP.
       }
     }
     S.current = const S();
-    return SynchronousFuture<S>(S.current);
+    return SynchronousFuture<S>(S.current!);
   }
 
   @override
@@ -211,7 +246,12 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
   ///
   /// Internal method to resolve a locale from a list of locales.
   ///
-  Locale _resolve(Locale locale, Locale fallback, Iterable<Locale> supported, bool withCountry) {
+  Locale _resolve(
+    Locale? locale,
+    Locale? fallback,
+    Iterable<Locale> supported,
+    bool? withCountry,
+  ) {
     if (locale == null || !_isSupported(locale, withCountry)) {
       return fallback ?? supported.first;
     }
@@ -230,7 +270,7 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
   ///
   /// Returns true if the specified locale is supported, false otherwise.
   ///
-  bool _isSupported(Locale locale, bool withCountry) {
+  bool _isSupported(Locale? locale, bool? withCountry) {
     if (locale != null) {
       for (Locale supportedLocale in supportedLocales) {
         // Language must always match both locales.
@@ -244,7 +284,9 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
         }
 
         // If no country requirement is requested, check if this locale has no country.
-        if (true != withCountry && (supportedLocale.countryCode == null || supportedLocale.countryCode.isEmpty)) {
+        if (true != withCountry &&
+            (supportedLocale.countryCode == null ||
+                supportedLocale.countryCode!.isEmpty)) {
           return true;
         }
       }
@@ -253,8 +295,8 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
   }
 }
 
-String getLang(Locale l) => l == null
-  ? null
-  : l.countryCode != null && l.countryCode.isEmpty
-    ? l.languageCode
-    : l.toString();
+String? getLang(Locale? l) => l == null
+    ? null
+    : l.countryCode != null && l.countryCode!.isEmpty
+        ? l.languageCode
+        : l.toString();
